@@ -1,0 +1,10 @@
+version "1.0-SNAPSHOT"
+
+dependencies {
+    implementation project(":components:database-support")
+    implementation project(":components:workflow-support")
+
+    implementation 'com.zaxxer:HikariCP:3.2.0'
+
+    testImplementation project(":components:test-support")
+}
