@@ -1,0 +1,6 @@
+version "1.0-SNAPSHOT"
+
+dependencies {
+    // RabbitMQ client
+    implementation 'com.rabbitmq:amqp-client:5.12.0'
+}
