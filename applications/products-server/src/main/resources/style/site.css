@@ -1,0 +1,133 @@
+html {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #414141;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+p {
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+a {
+    color: #6db33f;
+}
+
+strong {
+    font-weight: 900;
+}
+
+em {
+    font-style: italic;
+}
+
+p:not(:last-child), ul:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.container {
+    padding: 0 3rem;
+    margin: 0 auto;
+    max-width: 65rem;
+}
+
+header {
+    padding: 22rem 0 3rem;
+}
+
+section {
+    padding: 2rem 0 3rem;
+}
+
+section:nth-of-type(2n+1) {
+    background-color: #f4f4f4;
+}
+
+section p {
+    color: #808080;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+footer {
+    background-color: #414141;
+    color: white;
+    padding: 2rem 0
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+footer a {
+    color: white;
+}
+
+section.callout {
+    background-color: rgb(26, 128, 255);
+    color: white;
+}
+
+@media (max-width: 650px) {
+    html {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 0 2rem;
+    }
+
+    header {
+        padding-bottom: 1rem;
+    }
+
+    section {
+        padding-bottom: 2rem;
+    }
+}

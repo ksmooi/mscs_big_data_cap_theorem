@@ -1,0 +1,29 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+mainClassName = "io.milk.httpclient.AppKt"
+
+dependencies {
+    implementation project(":components:workflow-support")
+
+    implementation "io.ktor:ktor-client-jackson:$ktor_version"
+    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+
+    implementation "io.ktor:ktor-jackson:$ktor_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+}
+
+tasks.withType(Copy).all {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes "Main-Class": "io.milk.httpclient.AppKt"
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

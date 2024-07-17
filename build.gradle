@@ -1,0 +1,57 @@
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    ext.ktor_version = '1.6.0'
+    ext.mockk_version = '1.10.6'
+    ext.okhttp_version = '4.9.0'
+    ext.rabbitmq_version = '5.7.3'
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "6.3.1"
+    id "org.jetbrains.kotlin.jvm" version "1.6.10" apply false
+}
+
+subprojects {
+    if (name == "applications" || name == "components") return
+
+    group "io.milk"
+
+    apply plugin: 'kotlin'
+
+    defaultTasks "clean", "build"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+        implementation "io.ktor:ktor-server-jetty:$ktor_version"
+        implementation "io.ktor:ktor-html-builder:$ktor_version"
+
+        implementation "ch.qos.logback:logback-classic:1.2.3"
+
+        testImplementation "io.ktor:ktor-server-test-host:$ktor_version"
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        testImplementation "io.mockk:mockk:$mockk_version"
+        testImplementation "org.awaitility:awaitility:4.0.3"
+    }
+
+    sourceSets {
+        main.kotlin.srcDir "src/main/kotlin"
+        main.resources.srcDir "src/main/resources"
+
+        test.kotlin.srcDir "src/test/kotlin"
+        test.resources.srcDir "src/test/resources"
+    }
+
+    // needed for heroku
+    task stage(dependsOn: ['build', 'clean'])
+    build { mustRunAfter "clean" }
+    gradle.taskGraph.whenReady {
+        taskGraph ->
+            if (taskGraph.hasTask(stage)) {
+                test.enabled = false
+            }
+    }
+}

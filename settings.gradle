@@ -1,0 +1,11 @@
+rootProject.name = "the-milk-problem-continued"
+
+include "applications:products-server"
+include "applications:simple-http-client"
+include "applications:simple-rabbit-client"
+
+include "components:database-support"
+include "components:products"
+include "components:rabbitmq-support"
+include "components:test-support"
+include "components:workflow-support"
